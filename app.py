@@ -38,7 +38,7 @@ def main():
       knowledge_base = FAISS.from_texts(chunks, embeddings)
       
       # show user input
-      user_question = st.text_input("Faça uma pergunta para a base de conhecimento (1 arquivo detectado)")
+      user_question = st.text_input("Faça uma pergunta para a sua base de conhecimento (1 arquivo detectado)")
       if user_question:
         docs = knowledge_base.similarity_search(user_question)
         
