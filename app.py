@@ -11,12 +11,12 @@ from langchain.callbacks import get_openai_callback
 
 def main():
     load_dotenv()
-    st.set_page_config(page_title="Ask your PDF")
-    st.header("Ask your PDF 💬")
+    st.set_page_config(page_title="Minerva Quick Demo", page_icon="🦉🔍")
+    st.header("Minerva Quick Demo 🦉🔍")
     
     # upload file
-    pdf = st.file_uploader("Upload your PDF", type="pdf")
-    
+    # pdf = st.file_uploader("Upload your PDF", type="pdf")
+    pdf = open("Database - Proecho com nomes.pdf", "rb")
     # extract the text
     if pdf is not None:
       pdf_reader = PdfReader(pdf)
@@ -38,7 +38,7 @@ def main():
       knowledge_base = FAISS.from_texts(chunks, embeddings)
       
       # show user input
-      user_question = st.text_input("Ask a question about your PDF:")
+      user_question = st.text_input("Faça uma pergunta para a base de conhecimento (1 arquivo detectado)")
       if user_question:
         docs = knowledge_base.similarity_search(user_question)
         
